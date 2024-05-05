@@ -7,10 +7,15 @@
   <style>
     body {
       background-image: url('portici.jpg');
+      background-position: center center ;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-size:inherit;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
     }
+
     button {
       padding: 10px 20px;
       font-size: 18px;
@@ -21,40 +26,44 @@
       border-radius: 5px;
       outline: none;
       position: relative;
-      margin-top: 60vh;;
-
+      margin-top: 60vh;
     }
 
-    .res{
-        align-self: center;
-        top: 60vh;
-        font-size: 60px;
-        color: #E06524;
-        position: absolute;
-        top: 50vh;
-        left: 50vw;
-        transform: translate(-50%, -50%);
+    .res {
+      font-size: 50px;
+      font-family: 'Aesthetic';
+      color: #E06524;
+      position: absolute;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
     }
 
-    .circle{
-        position: absolute;
-        top: 50vh;
-        left: 50vw;
-        transform: translate(-50%, -50%);
-        width: 100px;
-        height: 100px;
-        background:rgb(43,58,155); /* colore blu */
-        border-radius: 50%;
+    .animazione {
+      font-size: 80px;
+      color: #E06524;
+      transition: font-size,  12  1s step-end;
+    }
+
+    .circle {
+      position: absolute;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: rgb(43, 58, 155); /* colore blu */
+      border-radius: 50%;
     }
 
     @font-face {
-  font-family: 'Aesthetic';
-  src: url('Aesthetic-Regular.ttf');
-}
+      font-family: 'Aesthetic';
+      src: url('Aesthetic-Regular.ttf');
+    }
 
-h1 {
-  font-family: 'Aesthetic', sans-serif;
-}
+    h1 {
+      font-family: 'Aesthetic', sans-serif;
+    }
 
   </style>
 </head>
@@ -65,13 +74,19 @@ h1 {
 <button onclick="lanciaDado()">Lancia il dado</button>
 <br>
 <div class="circle"></div>
-<div id="risultato" class="res"></div>
+<div id="risultato" class="res">Clicca il pulsante per iniziare!</div>
 
 <script>
-  function lanciaDado() {
-    var risultato = Math.floor(Math.random() * 6) + 1; // generazione di un numero casuale tra 1 e 6
-    document.getElementById("risultato").innerHTML =risultato;
+ function lanciaDado() {
+    var risultato = Math.floor(Math.random() * 6) + 1;
+    var risultatoDiv = document.getElementById("risultato");
+    risultatoDiv.innerHTML = risultato;
+    risultatoDiv.classList.add("animazione");
+    setTimeout(function() {
+      risultatoDiv.classList.remove("animazione");
+    }, 800);
   }
+
 </script>
 
 </body>

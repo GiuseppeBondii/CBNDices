@@ -8,7 +8,8 @@
     body {
       background-image: url('SchoolCup2024-3.jpeg');
       background-position: center center;
-      background-size:initial-scale cover;
+      background-size: cover;
+      background-size: 60vh;
       background-repeat: no-repeat;
       color: #fffefd;
       font-family: 'Gatwick', Arial, sans-serif;
@@ -36,6 +37,7 @@
       top: 50vh;
       left: 50vw;
       transform: translate(-50%, -50%);
+      background-color: #572c77;
     }
 
     .animazione {
@@ -53,6 +55,11 @@
       height: 100px;
       background: #572c77;
       border-radius: 50%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .circle.animazione {
+      transform: translate(-50%, -50%) scale(1.2);
     }
 
     @font-face {
@@ -61,7 +68,7 @@
     }
 
     h1 {
-      font-family: 'PPGatwick-Bold.otf', 'Times New Roman', Times, serif, sans-serif;
+      font-family: 'Gatwick', 'Times New Roman', Times, serif, sans-serif;
     }
 
   </style>
@@ -72,20 +79,24 @@
 
 <button onclick="lanciaDado()">Lancia il dado</button>
 <br>
-<div class="circle"></div>
+<div class="circle" id="circle"></div>
 <div id="risultato" class="res">Clicca il pulsante per iniziare!</div>
 
 <script>
  function lanciaDado() {
     var risultato = Math.floor(Math.random() * 6) + 1;
     var risultatoDiv = document.getElementById("risultato");
+    var circle = document.getElementById("circle");
+
     risultatoDiv.innerHTML = risultato;
     risultatoDiv.classList.add("animazione");
+    circle.classList.add("animazione");
+
     setTimeout(function() {
       risultatoDiv.classList.remove("animazione");
+      circle.classList.remove("animazione");
     }, 800);
   }
-
 </script>
 
 </body>
